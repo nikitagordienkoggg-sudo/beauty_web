@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.example.booking.entity.Payment;
 import com.example.booking.mediator.interfaces.IPaymentService;
+import com.example.booking.security.JwtAuthenticationFilter;
 
 
 @WebMvcTest(PaymentController.class)
@@ -21,6 +23,8 @@ class PaymentControllerTest {
     @Autowired MockMvc mockMvc;
 
     @MockBean IPaymentService paymentService;
+    @MockBean JwtAuthenticationFilter jwtAuthenticationFilter;
+    @MockBean UserDetailsService userDetailsService;
 
     @Test
     void shouldProcessPayment() throws Exception {

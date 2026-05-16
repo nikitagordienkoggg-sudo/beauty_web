@@ -8,12 +8,14 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.example.booking.entity.Booking;
 import com.example.booking.mediator.interfaces.IBookingService;
+import com.example.booking.security.JwtAuthenticationFilter;
 
 @WebMvcTest(BookingController.class)
 @AutoConfigureMockMvc(addFilters = false)
@@ -25,12 +27,20 @@ class BookingControllerTest {
     @Test
     void shouldReturnBookings() throws Exception {
 
+        when(bookingService.getBookingsByClient(1L)).thenReturn(java.util.List.of());
+
         mockMvc.perform(get("/api/bookings/client/1"))
                 .andExpect(status().isOk());
     }
 
     @MockBean
     private IBookingService bookingService;
+
+    @MockBean
+    private JwtAuthenticationFilter jwtAuthenticationFilter;
+
+    @MockBean
+    private UserDetailsService userDetailsService;
 
     @Test
     void shouldCreateBooking() throws Exception {
