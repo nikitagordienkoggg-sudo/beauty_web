@@ -4,19 +4,18 @@ import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.when;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.example.booking.BookingApplication;
 import com.example.booking.entity.Payment;
 import com.example.booking.mediator.interfaces.IPaymentService;
 
 
 @WebMvcTest(PaymentController.class)
-@ContextConfiguration(classes = BookingApplication.class)
+@AutoConfigureMockMvc(addFilters = false)
 class PaymentControllerTest {
 
     @Autowired MockMvc mockMvc;
