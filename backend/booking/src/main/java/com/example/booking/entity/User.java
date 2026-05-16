@@ -19,6 +19,13 @@ public abstract class User {
 
     protected String phone;
 
+    @Column(nullable = false)
+    protected String password;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    protected Role role;
+
     public User() {
     }
 
@@ -53,6 +60,14 @@ public abstract class User {
         return phone;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -67,5 +82,13 @@ public abstract class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
