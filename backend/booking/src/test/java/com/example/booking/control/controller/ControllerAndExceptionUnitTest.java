@@ -1,5 +1,15 @@
 package com.example.booking.control.controller;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 import com.example.booking.control.GlobalExceptionHandler;
 import com.example.booking.entity.Master;
 import com.example.booking.entity.Schedule;
@@ -9,18 +19,8 @@ import com.example.booking.mediator.interfaces.IAdminService;
 import com.example.booking.mediator.interfaces.IScheduleService;
 import com.example.booking.mediator.interfaces.IServiceCatalogService;
 import com.example.booking.mediator.interfaces.IStaffManagementService;
+
 import jakarta.persistence.EntityNotFoundException;
-import org.junit.jupiter.api.Test;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 class ControllerAndExceptionUnitTest {
 
@@ -84,7 +84,7 @@ class ControllerAndExceptionUnitTest {
         assertEquals(HttpStatus.BAD_REQUEST, illegalState.getStatusCode());
         assertEquals("bad state", illegalState.getBody());
 
-        ResponseEntity<String> validation = handler.handleValidation((MethodArgumentNotValidException) null);
+        ResponseEntity<String> validation = handler.handleValidation();
         assertEquals(HttpStatus.BAD_REQUEST, validation.getStatusCode());
         assertEquals("Validation error", validation.getBody());
     }
