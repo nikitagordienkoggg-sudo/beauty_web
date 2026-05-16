@@ -29,6 +29,13 @@ public class StaffManagementServiceImpl implements IStaffManagementService {
         this.bookingRepository = bookingRepository;
     }
 
+    // ========================= UC-06 =========================
+
+    @Override
+    public Master createMaster(Master master) {
+        return masterRepository.save(master);
+    }
+
     // ========================= UC-07 =========================
 
     @Override

@@ -63,8 +63,10 @@ class ControllerAndExceptionUnitTest {
         IStaffManagementService staffService = mock(IStaffManagementService.class);
         StaffController staffController = new StaffController(staffService);
         Master master = new Master();
+        when(staffService.createMaster(master)).thenReturn(master);
         when(staffService.updateMaster(1L, master)).thenReturn(master);
 
+        assertEquals(master, staffController.create(master));
         assertEquals(master, staffController.update(1L, master));
         staffController.complete(5L);
         verify(staffService).confirmServiceCompletion(5L);

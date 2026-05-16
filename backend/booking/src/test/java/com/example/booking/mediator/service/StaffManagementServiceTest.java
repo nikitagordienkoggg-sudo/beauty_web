@@ -28,7 +28,11 @@ class StaffManagementServiceTest {
     @InjectMocks StaffManagementServiceImpl service;
 
     @Test
-    void updateMasterAvailabilityAndCompletion() {
+    void createAndUpdateMasterAvailabilityAndCompletion() {
+        Master created = new Master();
+        when(masterRepository.save(created)).thenReturn(created);
+        assertEquals(created, service.createMaster(created));
+
         Master existing = new Master();
         Master update = new Master();
         update.setSpecialization("coloring");
