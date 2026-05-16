@@ -2,7 +2,6 @@ package com.example.booking.foundation.repository;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,7 +26,7 @@ public class ClientRepositoryTest{
         c.setName("Test");
         c.setEmail("a@a.com");
         c.setPassword("pwd");
-        c.setRole(Role.CLIENT);
+        c.setRole(Role.ROLE_CLIENT);
 
         Client saved = repo.save(c);
 
@@ -41,7 +40,7 @@ public class ClientRepositoryTest{
         c.setEmail("test@mail.com");
         c.setName("Test");
         c.setPassword("pwd");
-        c.setRole(Role.CLIENT);
+        c.setRole(Role.ROLE_CLIENT);
 
         repo.save(c);
 

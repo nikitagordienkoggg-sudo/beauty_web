@@ -1,20 +1,21 @@
 package com.example.booking.foundation.repository;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import com.example.booking.entity.Master;
-import com.example.booking.entity.Schedule;
-import com.example.booking.entity.Role;
-import com.example.booking.foundation.repository.impl.MasterRepositoryImpl;
-import com.example.booking.foundation.repository.impl.ScheduleRepositoryImpl;
-import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
+
+import com.example.booking.entity.Master;
+import com.example.booking.entity.Role;
+import com.example.booking.entity.Schedule;
+import com.example.booking.foundation.repository.impl.MasterRepositoryImpl;
+import com.example.booking.foundation.repository.impl.ScheduleRepositoryImpl;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -31,7 +32,7 @@ class ScheduleRepositoryTest {
     void shouldSaveAndFindByMasterAndDate() {
         Master master = new Master("Ann", "ann@test.com", "321", "Style");
         master.setPassword("pwd");
-        master.setRole(Role.MASTER);
+        master.setRole(Role.ROLE_MASTER);
         masterRepository.save(master);
 
         Schedule schedule = new Schedule();

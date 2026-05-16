@@ -3,17 +3,17 @@ package com.example.booking.foundation.repository;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import com.example.booking.entity.Master;
-import com.example.booking.entity.Salon;
-import com.example.booking.entity.Role;
-import com.example.booking.foundation.repository.impl.MasterRepositoryImpl;
-import com.example.booking.foundation.repository.impl.SalonRepositoryImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
+
+import com.example.booking.entity.Master;
+import com.example.booking.entity.Role;
+import com.example.booking.entity.Salon;
+import com.example.booking.foundation.repository.impl.MasterRepositoryImpl;
+import com.example.booking.foundation.repository.impl.SalonRepositoryImpl;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -35,7 +35,7 @@ class MasterRepositoryTest {
 
         Master master = new Master("Jane", "jane@test.com", "123", "Hair");
         master.setPassword("pwd");
-        master.setRole(Role.MASTER);
+        master.setRole(Role.ROLE_MASTER);
         master.setSalon(salon);
         Master saved = masterRepository.save(master);
 
@@ -47,7 +47,7 @@ class MasterRepositoryTest {
     void shouldDeleteMasterById() {
         Master master = new Master("John", "john@test.com", "555", "Nails");
         master.setPassword("pwd");
-        master.setRole(Role.MASTER);
+        master.setRole(Role.ROLE_MASTER);
         Master saved = masterRepository.save(master);
 
         masterRepository.deleteById(saved.getId());
