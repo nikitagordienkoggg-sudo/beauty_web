@@ -15,6 +15,11 @@ public class StaffController {
         this.service = service;
     }
 
+    @PostMapping
+    public Master create(@RequestBody Master master) {
+        return service.createMaster(master);
+    }
+
     @PutMapping("/{id}")
     public Master update(@PathVariable Long id,
                          @RequestBody Master master) {
