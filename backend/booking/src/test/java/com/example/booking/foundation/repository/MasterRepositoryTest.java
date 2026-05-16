@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.booking.entity.Master;
 import com.example.booking.entity.Salon;
+import com.example.booking.entity.Role;
 import com.example.booking.foundation.repository.impl.MasterRepositoryImpl;
 import com.example.booking.foundation.repository.impl.SalonRepositoryImpl;
 import org.junit.jupiter.api.Test;
@@ -33,6 +34,8 @@ class MasterRepositoryTest {
         salonRepository.save(salon);
 
         Master master = new Master("Jane", "jane@test.com", "123", "Hair");
+        master.setPassword("pwd");
+        master.setRole(Role.MASTER);
         master.setSalon(salon);
         Master saved = masterRepository.save(master);
 
@@ -43,6 +46,8 @@ class MasterRepositoryTest {
     @Test
     void shouldDeleteMasterById() {
         Master master = new Master("John", "john@test.com", "555", "Nails");
+        master.setPassword("pwd");
+        master.setRole(Role.MASTER);
         Master saved = masterRepository.save(master);
 
         masterRepository.deleteById(saved.getId());

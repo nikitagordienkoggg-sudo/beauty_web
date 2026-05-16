@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.booking.entity.Master;
 import com.example.booking.entity.Schedule;
+import com.example.booking.entity.Role;
 import com.example.booking.foundation.repository.impl.MasterRepositoryImpl;
 import com.example.booking.foundation.repository.impl.ScheduleRepositoryImpl;
 import java.time.LocalDate;
@@ -29,6 +30,8 @@ class ScheduleRepositoryTest {
     @Test
     void shouldSaveAndFindByMasterAndDate() {
         Master master = new Master("Ann", "ann@test.com", "321", "Style");
+        master.setPassword("pwd");
+        master.setRole(Role.MASTER);
         masterRepository.save(master);
 
         Schedule schedule = new Schedule();

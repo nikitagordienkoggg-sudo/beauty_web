@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 
 import com.example.booking.entity.Client;
+import com.example.booking.entity.Role;
 import com.example.booking.foundation.repository.impl.ClientRepositoryImpl;
 
 @SpringBootTest
@@ -25,6 +26,8 @@ public class ClientRepositoryTest{
         Client c = new Client();
         c.setName("Test");
         c.setEmail("a@a.com");
+        c.setPassword("pwd");
+        c.setRole(Role.CLIENT);
 
         Client saved = repo.save(c);
 
@@ -37,6 +40,8 @@ public class ClientRepositoryTest{
         Client c = new Client();
         c.setEmail("test@mail.com");
         c.setName("Test");
+        c.setPassword("pwd");
+        c.setRole(Role.CLIENT);
 
         repo.save(c);
 
